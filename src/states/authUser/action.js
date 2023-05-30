@@ -1,5 +1,7 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { toast } from 'react-toastify';
 import api from '../../utils/api';
+import { toasterOptions } from '../../utils/constant';
 
 export const ActionType = {
   SET_AUTH_USER: 'SET_AUTH_USER',
@@ -26,17 +28,18 @@ export function unsetAuthUserActionCreator() {
 
 export function asyncSetAuthUser({ email, password }) {
   return async (dispatch) => {
-    dispatch(showLoading());
     try {
+      dispatch(showLoading());
       const token = await api.login({ email, password });
       api.putAccessToken(token);
       const authUser = await api.getOwnProfile();
 
       dispatch(setAuthUserActionCreator(authUser));
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message, toasterOptions);
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 
@@ -46,16 +49,18 @@ export function asyncUnsetAuthUser() {
     dispatch(unsetAuthUserActionCreator());
     api.putAccessToken('');
     dispatch(hideLoading());
+    toast.success('user has logged out', toasterOptions);
   };
 }
-export function asyncRegisterUser({ id, name, password }) {
+export function asyncRegisterUser({ email, name, password }) {
   return async (dispatch) => {
-    dispatch(showLoading());
     try {
-      await api.register({ id, name, password });
+      dispatch(showLoading());
+      await api.register({ email, name, password });
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message, toasterOptions);
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }

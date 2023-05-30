@@ -1,6 +1,7 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { toast } from 'react-toastify';
 import api from '../../utils/api';
-import { VoteType } from '../../utils/constant';
+import { VoteType, toasterOptions } from '../../utils/constant';
 
 export const ActionType = {
   RECEIVE_THREAD_DETAIL: 'RECEIVE_THREAD_DETAIL',
@@ -65,7 +66,7 @@ export function asyncReceiveThreadDetail(threadId) {
       const threadDetail = await api.getThreadDetail(threadId);
       dispatch(receiveThreadDetailActionCreator(threadDetail));
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message, toasterOptions);
     } finally {
       dispatch(hideLoading());
     }
@@ -79,7 +80,7 @@ export function asyncAddCommentThreadDetail({ threadId, content }) {
       const comment = await api.createComment({ threadId, content });
       dispatch(addCommentThreadDetailActionCreator(comment));
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message, toasterOptions);
     }
     dispatch(hideLoading());
   };
@@ -123,7 +124,7 @@ export function asyncVoteThread({ threadId, voteType }) {
           break;
       }
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message, toasterOptions);
     }
     dispatch(hideLoading());
   };
@@ -167,7 +168,7 @@ export function asyncVoteComment({ threadId, commentId, voteType }) {
           break;
       }
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
     dispatch(hideLoading());
   };

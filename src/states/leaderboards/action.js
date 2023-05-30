@@ -1,5 +1,7 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { toast } from 'react-toastify';
 import api from '../../utils/api';
+import { toasterOptions } from '../../utils/constant';
 
 export const ActionType = {
   RECEIVE_LEADERBOARDS: 'RECEIVE_LEADERBOARDS',
@@ -18,10 +20,10 @@ export default function asyncReceiveLeaderboards() {
     dispatch(showLoading());
     try {
       const leaderboards = await api.getLeaderboard();
-
       dispatch(receiveLeaderboardActionCreator(leaderboards));
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message, toasterOptions);
+      throw new Error(error.message);
     }
     dispatch(hideLoading());
   };

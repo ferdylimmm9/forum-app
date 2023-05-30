@@ -1,3 +1,6 @@
+import { toast } from 'react-toastify';
+import { toasterOptions } from './constant';
+
 const api = (() => {
   const BASE_URL = 'https://forum-api.dicoding.dev/v1';
 
@@ -39,6 +42,7 @@ const api = (() => {
       throw new Error(message);
     }
 
+    toast.success(message, toasterOptions);
     const {
       data: { user },
     } = responseJson;
@@ -65,6 +69,7 @@ const api = (() => {
     if (status !== 'success') {
       throw new Error(message);
     }
+    toast.success(message, toasterOptions);
 
     const {
       data: { token },
@@ -184,6 +189,8 @@ const api = (() => {
       throw new Error(message);
     }
 
+    toast.success(message, toasterOptions);
+
     const {
       data: { thread },
     } = responseJson;
@@ -212,6 +219,8 @@ const api = (() => {
     if (status !== 'success') {
       throw new Error(message);
     }
+
+    toast.success(message, toasterOptions);
 
     const {
       data: { comment },

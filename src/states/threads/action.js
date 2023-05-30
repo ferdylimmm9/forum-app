@@ -1,6 +1,7 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { toast } from 'react-toastify';
 import api from '../../utils/api';
-import { VoteType } from '../../utils/constant';
+import { VoteType, toasterOptions } from '../../utils/constant';
 
 export const ActionType = {
   RECEIVE_THREADS: 'RECEIVE_THREADS',
@@ -45,7 +46,7 @@ export function asyncAddThread({ title, body, category = '' }) {
       const thread = await api.createThread({ title, body, category });
       dispatch(addThreadActionCreator(thread));
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message, toasterOptions);
     }
     dispatch(hideLoading());
   };
@@ -89,7 +90,7 @@ export function asyncVoteThread({ threadId, voteType }) {
           break;
       }
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message, toasterOptions);
     }
     dispatch(hideLoading());
   };

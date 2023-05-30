@@ -17,20 +17,17 @@ export function setIsPreloadActionCreator(isPreload) {
 
 export function asyncPreloadProcess() {
   return async (dispatch) => {
-    dispatch(showLoading());
     try {
-      // preload process
+      dispatch(showLoading());
       const authUser = await api.getOwnProfile();
       dispatch(setAuthUserActionCreator(authUser));
     } catch (error) {
-      // fallback process
       dispatch(setAuthUserActionCreator(null));
       dispatch(setIsPreloadActionCreator(null));
     } finally {
-      // end preload process
       dispatch(setIsPreloadActionCreator(false));
       dispatch(setIsPreloadActionCreator(false));
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
