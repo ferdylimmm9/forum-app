@@ -15,5 +15,22 @@ const homePageStyles = {
     alignItems: 'center',
     marginBottom: 32,
   },
+  searchWrapper: {
+    width: '100%',
+    maxWidth: 400,
+    padding: 8,
+    borderWidth: 1,
+    borderRadius: 4,
+  },
+  categoryWrapper: {
+    display: 'flex',
+    gap: 8,
+    flexWrap: 'wrap',
+  },
+  categoryButtonDefaultWrapper: {
+    padding: 8,
+    borderWidth: 1,
+    borderRadius: 16,
+  },
 };
 export default homePageStyles;

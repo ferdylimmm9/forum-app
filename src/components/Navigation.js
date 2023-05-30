@@ -1,7 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Crown, House, SignIn, SignOut, UserPlus } from '@phosphor-icons/react';
+import {
+  Crown,
+  House,
+  Plus,
+  SignIn,
+  SignOut,
+  UserPlus,
+} from '@phosphor-icons/react';
 import { asyncUnsetAuthUser } from '../states/authUser/action';
 import navigationStyles from '../styles/navigation-styles';
 
@@ -44,6 +51,13 @@ function Navigation() {
             },
           ]
         : [
+            {
+              label: 'Add Thread',
+              icon: <Plus size={24} />,
+              onClick: () => {
+                navigate('/threads');
+              },
+            },
             {
               label: 'Logout',
               icon: <SignOut size={24} />,

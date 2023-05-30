@@ -9,6 +9,7 @@ const leaderboardsPageStyles = {
     display: 'flex',
     justifyContent: 'space-between',
     maxWidth: 400,
+    width: '100%',
     alignItems: 'center',
     margin: 'auto',
     marginBottom: 8,

@@ -11,6 +11,7 @@ const detailPageStyles = {
   },
   contentWrapper: {
     maxWidth: 500,
+    width: '100%',
     padding: 32,
     margin: 'auto',
   },

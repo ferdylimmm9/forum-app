@@ -28,6 +28,12 @@
       "object-curly-newline":"off",
       "indent":"off",
       "react/no-danger":"off",
-      "no-extra-boolean-cast":"off"
+      "no-extra-boolean-cast":"off",
+      "semi":"off",
+      "semi-spacing":"off",
+      "no-unused-expressions":"off",
+      "function-paren-newline":"off",
+      "implicit-arrow-linebreak":"off",
+      "operator-linebreak":"off"
     }
 }
