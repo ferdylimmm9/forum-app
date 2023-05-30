@@ -1,10 +1,6 @@
-/**
- * @TODO: Define the reducer for the threads state
- */
-
 import { ActionType } from './action';
 
-export default function threadsReducer(threads = [], action = {}) {
+export function threadsReducer(threads = [], action = {}) {
   switch (action.type) {
     case ActionType.RECEIVE_THREADS:
       return action.payload.threads;

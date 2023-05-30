@@ -1,9 +1,6 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 
-/**
- * @TODO: Define all the actions (creator) for the authUser state
- */
 export const ActionType = {
   SET_AUTH_USER: 'SET_AUTH_USER',
   UNSET_AUTH_USER: 'UNSET_AUTH_USER',

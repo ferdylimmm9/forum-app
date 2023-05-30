@@ -1,7 +1,3 @@
-/**
- * @TODO: Define all the actions (creator) for the talkDetail state
- */
-
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 import { VoteType } from '../../utils/constant';
@@ -143,7 +139,7 @@ export function asyncVoteComment({ threadId, commentId, voteType }) {
         case VoteType.UpVote:
           dispatch(
             voteCommentActionCreator({
-              commentId: comment.id,
+              commentId: comment.commentId,
               type: ActionType.UPVOTE_COMMENT_THREAD_DETAIL,
               userId: authUser.id,
             })
@@ -152,7 +148,7 @@ export function asyncVoteComment({ threadId, commentId, voteType }) {
         case VoteType.DownVote:
           dispatch(
             voteCommentActionCreator({
-              commentId: comment.id,
+              commentId: comment.commentId,
               type: ActionType.DOWNVOTE_COMMENT_THREAD_DETAIL,
               userId: authUser.id,
             })
@@ -161,7 +157,7 @@ export function asyncVoteComment({ threadId, commentId, voteType }) {
         case VoteType.NeutralVote:
           dispatch(
             voteCommentActionCreator({
-              commentId: comment.id,
+              commentId: comment.commentId,
               type: ActionType.NEUTRALVOTE_COMMENT_THREAD_DETAIL,
               userId: authUser.id,
             })

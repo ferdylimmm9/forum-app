@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import asyncPopulateLeaderboardsAndThreads from '../states/shared/action';
-import { asyncAddThread, asyncVoteThread } from '../states/threads/action';
+import ThreadCard from '../components/ThreadCard';
+import homePageStyles from '../styles/home-page-styles';
 
 function HomePage() {
   const {
     threads = [],
-    leaderboards = [],
     authUser,
+    users = [],
   } = useSelector((states) => states);
   const dispatch = useDispatch();
 
@@ -15,16 +16,16 @@ function HomePage() {
     dispatch(asyncPopulateLeaderboardsAndThreads());
   }, [dispatch]);
 
-  const onAddThread = (body, title, category) => {
-    dispatch(asyncAddThread({ body, title, category }));
-  };
-
-  const onVoteThread = (threadId, voteType) => {
-    dispatch(asyncVoteThread({ threadId, voteType }));
-  };
-
-  console.log(threads, leaderboards, authUser);
-  return <>HOME</>;
+  return (
+    <div style={homePageStyles.homeWrapper}>
+      <h2 style={homePageStyles.textCenter}>Forum App</h2>
+      <div style={homePageStyles.contentWrapper}>
+        {threads.map((thread) => (
+          <ThreadCard {...thread} users={users} userId={authUser?.id ?? ''} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default HomePage;

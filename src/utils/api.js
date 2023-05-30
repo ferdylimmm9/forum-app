@@ -109,6 +109,24 @@ const api = (() => {
     return leaderboards;
   }
 
+  async function getAllUsers() {
+    const response = await fetch(`${BASE_URL}/users`);
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const {
+      data: { users },
+    } = responseJson;
+
+    return users;
+  }
+
   async function getAllThreads() {
     const response = await fetch(`${BASE_URL}/threads`);
 
@@ -139,10 +157,10 @@ const api = (() => {
     }
 
     const {
-      data: { threadDetail },
+      data: { detailThread },
     } = responseJson;
 
-    return threadDetail;
+    return detailThread;
   }
 
   async function createThread({ title, body, category = '' }) {
@@ -220,6 +238,12 @@ const api = (() => {
     if (status !== 'success') {
       throw new Error(message);
     }
+
+    const {
+      data: { vote },
+    } = responseJson;
+
+    return vote;
   }
 
   async function voteComment({ threadId, commentId, voteType }) {
@@ -240,6 +264,12 @@ const api = (() => {
     if (status !== 'success') {
       throw new Error(message);
     }
+
+    const {
+      data: { vote },
+    } = responseJson;
+
+    return vote;
   }
 
   return {
@@ -255,6 +285,7 @@ const api = (() => {
     getThreadDetail,
     voteComment,
     createComment,
+    getAllUsers,
   };
 })();
 

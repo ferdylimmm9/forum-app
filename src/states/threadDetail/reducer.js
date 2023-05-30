@@ -1,6 +1,3 @@
-/**
- * @TODO: Define reducer for the threadDetail state
- */
 import { ActionType } from './action';
 
 export function threadDetailReducer(threadDetail = null, action = {}) {
@@ -12,7 +9,7 @@ export function threadDetailReducer(threadDetail = null, action = {}) {
     case ActionType.ADD_COMMENT_THREAD_DETAIL:
       return {
         ...threadDetail,
-        comment: [...threadDetail.comment, action.payload.comment],
+        comments: [...threadDetail.comments, action.payload.comment],
       };
     case ActionType.UPVOTE_THREAD:
       return {

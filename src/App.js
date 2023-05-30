@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import moment from 'moment';
 import { asyncPreloadProcess } from './states/isPreload/action';
-import { asyncUnsetAuthUser } from './states/authUser/action';
 import Loading from './components/Loading';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -10,22 +10,16 @@ import LeaderboardsPage from './pages/LeaderboardsPage';
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
 import NotFoundPage from './pages/NotFoundPage';
-import Header from './components/Header';
+import Navigation from './components/Navigation';
+import './styles/styles.css';
 
 function App() {
-  const { authUser = null, isPreload = false } = useSelector(
-    (states) => states
-  ); // @TODO: get authUser and isPreLoad state from store
-
+  moment.locale('id');
+  const { isPreload = false } = useSelector((states) => states);
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(asyncPreloadProcess());
   }, [dispatch]);
-
-  const onSignOut = () => {
-    // @TODO: dispatch async action to sign out
-    dispatch(asyncUnsetAuthUser());
-  };
 
   if (isPreload) {
     return null;
@@ -33,19 +27,17 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Loading />
-      <main>
+      <main className="main-container">
+        <Loading />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/leaderboards" element={<LeaderboardsPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<NotFoundPage />} />
-          {authUser !== null && (
-            <Route path="/threads/:id" element={<DetailPage />} />
-          )}
+          <Route path="/threads/:id" element={<DetailPage />} />
         </Routes>
+        <Navigation />
       </main>
     </div>
   );
