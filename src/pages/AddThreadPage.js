@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useInput from '../hooks/useInput';
 import { asyncAddThread } from '../states/threads/action';
+import addThreadPageStyles from '../styles/add-thread-page.styles';
 
 function AddThreadPage() {
   const [title, handleTitle] = useInput('');
@@ -21,47 +22,24 @@ function AddThreadPage() {
   );
 
   return (
-    <div style={{ overflow: 'auto', paddingTop: 12, paddingBottom: 80 }}>
-      <h2
-        style={{
-          textAlign: 'center',
-        }}
-      >
-        Tambah Thread
-      </h2>
+    <div style={addThreadPageStyles.threadWrapper}>
+      <h2 style={addThreadPageStyles.textCenter}>Tambah Thread</h2>
 
       <form onSubmit={onSubmit}>
-        <div
-          style={{
-            display: 'flex',
-            gap: 16,
-            flexDirection: 'column',
-            maxWidth: 512,
-            width: '100%',
-            margin: '24px auto',
-          }}
-        >
+        <div style={addThreadPageStyles.contentWrapper}>
           <input
             type="text"
             value={title}
             onChange={handleTitle}
             placeholder="Judul"
-            style={{
-              padding: 8,
-              borderWidth: 1,
-              borderRadius: 2,
-            }}
+            style={addThreadPageStyles.inputWrapper}
           />
           <input
             type="text"
             value={category}
             onChange={handleCategory}
             placeholder="Kategori"
-            style={{
-              padding: 8,
-              borderWidth: 1,
-              borderRadius: 2,
-            }}
+            style={addThreadPageStyles.inputWrapper}
           />
           <div
             className="content-editable"
@@ -72,18 +50,7 @@ function AddThreadPage() {
               ? { dangerouslySetInnerHTML: { __html: content } }
               : {})}
           />
-          <button
-            style={{
-              padding: 8,
-              borderWidth: 1,
-              borderRadius: 4,
-              display: 'flex',
-              justifyContent: 'center',
-              gap: 4,
-              cursor: 'pointer',
-            }}
-            type="submit"
-          >
+          <button style={addThreadPageStyles.submitButtonWrapper} type="submit">
             Buat
           </button>
         </div>
