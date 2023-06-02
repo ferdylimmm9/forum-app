@@ -37,6 +37,7 @@ export function asyncSetAuthUser({ email, password }) {
       dispatch(setAuthUserActionCreator(authUser));
     } catch (error) {
       toast.error(error.message, toasterOptions);
+      alert(error.message);
     } finally {
       dispatch(hideLoading());
     }

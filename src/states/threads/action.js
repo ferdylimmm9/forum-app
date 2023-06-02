@@ -39,6 +39,19 @@ export function voteThreadActionCreator({ threadId, type, userId }) {
   };
 }
 
+export function asyncReceiveThreadsActionCreator() {
+  return async (dispatch) => {
+    dispatch(showLoading());
+    try {
+      const threads = await api.getAllThreads();
+      dispatch(receiveThreadsActionCreator(threads));
+    } catch (error) {
+      toast.error(error.message, toasterOptions);
+    }
+    dispatch(hideLoading());
+  };
+}
+
 export function asyncAddThread({ title, body, category = '' }) {
   return async (dispatch) => {
     dispatch(showLoading());

@@ -31,20 +31,20 @@ function AddThreadPage() {
             type="text"
             value={title}
             onChange={handleTitle}
-            placeholder="Judul"
+            placeholder="judul"
             style={addThreadPageStyles.inputWrapper}
           />
           <input
             type="text"
             value={category}
             onChange={handleCategory}
-            placeholder="Kategori"
+            placeholder="kategori"
             style={addThreadPageStyles.inputWrapper}
           />
           <div
             className="content-editable"
             contentEditable
-            placeholder="Masukkan Konten"
+            placeholder="konten"
             onInput={(e) => setContent(e.currentTarget.innerHTML)}
             {...(content === ''
               ? { dangerouslySetInnerHTML: { __html: content } }
