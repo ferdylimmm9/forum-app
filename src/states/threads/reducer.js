@@ -13,7 +13,7 @@ export function threadsReducer(threads = [], action = {}) {
             ...thread,
             upVotesBy: [...thread.upVotesBy, action.payload.userId],
             downVotesBy: thread.downVotesBy.filter(
-              (vote) => vote !== action.payload.userId
+              (vote) => vote !== action.payload.userId,
             ),
           };
         }
@@ -26,7 +26,7 @@ export function threadsReducer(threads = [], action = {}) {
             ...thread,
             downVotesBy: [...thread.downVotesBy, action.payload.userId],
             upVotesBy: thread.upVotesBy.filter(
-              (vote) => vote !== action.payload.userId
+              (vote) => vote !== action.payload.userId,
             ),
           };
         }
@@ -38,10 +38,10 @@ export function threadsReducer(threads = [], action = {}) {
           return {
             ...thread,
             downVotesBy: thread.downVotesBy.filter(
-              (vote) => vote !== action.payload.userId
+              (vote) => vote !== action.payload.userId,
             ),
             upVotesBy: thread.upVotesBy.filter(
-              (vote) => vote !== action.payload.userId
+              (vote) => vote !== action.payload.userId,
             ),
           };
         }

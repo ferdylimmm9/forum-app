@@ -13,7 +13,7 @@ function RegisterForm({ onRegister }) {
       e.preventDefault();
       onRegister({ email, password, name });
     },
-    [onRegister, email, password, name]
+    [onRegister, email, password, name],
   );
   return (
     <form onSubmit={onSubmit} style={registerFormStyles.formWrapper}>

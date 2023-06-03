@@ -16,7 +16,7 @@ export function threadDetailReducer(threadDetail = null, action = {}) {
         ...threadDetail,
         upVotesBy: [...threadDetail.upVotesBy, action.payload.userId],
         downVotesBy: threadDetail.downVotesBy.filter(
-          (vote) => vote !== action.payload.userId
+          (vote) => vote !== action.payload.userId,
         ),
       };
     case ActionType.DOWNVOTE_THREAD:
@@ -24,17 +24,17 @@ export function threadDetailReducer(threadDetail = null, action = {}) {
         ...threadDetail,
         downVotesBy: [...threadDetail.downVotesBy, action.payload.userId],
         upVotesBy: threadDetail.upVotesBy.filter(
-          (vote) => vote !== action.payload.userId
+          (vote) => vote !== action.payload.userId,
         ),
       };
     case ActionType.NEUTRALVOTE_THREAD:
       return {
         ...threadDetail,
         downVotesBy: threadDetail.downVotesBy.filter(
-          (vote) => vote !== action.payload.userId
+          (vote) => vote !== action.payload.userId,
         ),
         upVotesBy: threadDetail.upVotesBy.filter(
-          (vote) => vote !== action.payload.userId
+          (vote) => vote !== action.payload.userId,
         ),
       };
 
@@ -47,7 +47,7 @@ export function threadDetailReducer(threadDetail = null, action = {}) {
               ...comment,
               upVotesBy: [...comment.upVotesBy, action.payload.userId],
               downVotesBy: comment.downVotesBy.filter(
-                (vote) => vote !== action.payload.userId
+                (vote) => vote !== action.payload.userId,
               ),
             };
           }
@@ -63,7 +63,7 @@ export function threadDetailReducer(threadDetail = null, action = {}) {
               ...comment,
               downVotesBy: [...comment.downVotesBy, action.payload.userId],
               upVotesBy: comment.upVotesBy.filter(
-                (vote) => vote !== action.payload.userId
+                (vote) => vote !== action.payload.userId,
               ),
             };
           }
@@ -78,10 +78,10 @@ export function threadDetailReducer(threadDetail = null, action = {}) {
             return {
               ...comment,
               downVotesBy: threadDetail.downVotesBy.filter(
-                (vote) => vote !== action.payload.userId
+                (vote) => vote !== action.payload.userId,
               ),
               upVotesBy: threadDetail.upVotesBy.filter(
-                (vote) => vote !== action.payload.userId
+                (vote) => vote !== action.payload.userId,
               ),
             };
           }

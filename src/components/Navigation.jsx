@@ -68,7 +68,7 @@ function Navigation() {
             },
           ]),
     ],
-    [authUser, dispatch, navigate]
+    [authUser, dispatch, navigate],
   );
 
   return (

@@ -99,7 +99,7 @@ export function asyncVoteThread({ threadId, voteType }) {
               threadId: vote.threadId,
               type: ActionType.UPVOTE_THREAD,
               userId: authUser.id,
-            })
+            }),
           );
           break;
         case VoteType.DownVote:
@@ -108,7 +108,7 @@ export function asyncVoteThread({ threadId, voteType }) {
               threadId: vote.threadId,
               type: ActionType.DOWNVOTE_THREAD,
               userId: authUser.id,
-            })
+            }),
           );
           break;
         case VoteType.NeutralVote:
@@ -117,7 +117,7 @@ export function asyncVoteThread({ threadId, voteType }) {
               threadId: vote.threadId,
               type: ActionType.NEUTRALVOTE_THREAD,
               userId: authUser.id,
-            })
+            }),
           );
           break;
         default:
@@ -143,7 +143,7 @@ export function asyncVoteComment({ threadId, commentId, voteType }) {
               commentId: comment.commentId,
               type: ActionType.UPVOTE_COMMENT_THREAD_DETAIL,
               userId: authUser.id,
-            })
+            }),
           );
           break;
         case VoteType.DownVote:
@@ -152,7 +152,7 @@ export function asyncVoteComment({ threadId, commentId, voteType }) {
               commentId: comment.commentId,
               type: ActionType.DOWNVOTE_COMMENT_THREAD_DETAIL,
               userId: authUser.id,
-            })
+            }),
           );
           break;
         case VoteType.NeutralVote:
@@ -161,7 +161,7 @@ export function asyncVoteComment({ threadId, commentId, voteType }) {
               commentId: comment.commentId,
               type: ActionType.NEUTRALVOTE_COMMENT_THREAD_DETAIL,
               userId: authUser.id,
-            })
+            }),
           );
           break;
         default:

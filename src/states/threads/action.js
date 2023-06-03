@@ -78,7 +78,7 @@ export function asyncVoteThread({ threadId, voteType }) {
               threadId: vote.threadId,
               type: ActionType.UPVOTE_THREAD,
               userId: authUser.id,
-            })
+            }),
           );
           break;
         case VoteType.DownVote:
@@ -87,7 +87,7 @@ export function asyncVoteThread({ threadId, voteType }) {
               threadId: vote.threadId,
               type: ActionType.DOWNVOTE_THREAD,
               userId: authUser.id,
-            })
+            }),
           );
           break;
         case VoteType.NeutralVote:
@@ -96,7 +96,7 @@ export function asyncVoteThread({ threadId, voteType }) {
               threadId: vote.threadId,
               type: ActionType.NEUTRALVOTE_THREAD,
               userId: authUser.id,
-            })
+            }),
           );
           break;
         default:

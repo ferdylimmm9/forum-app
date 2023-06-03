@@ -209,7 +209,7 @@ const api = (() => {
         body: JSON.stringify({
           content,
         }),
-      }
+      },
     );
 
     const responseJson = await response.json();
@@ -237,7 +237,7 @@ const api = (() => {
         headers: {
           'Content-Type': 'application/json',
         },
-      }
+      },
     );
 
     const responseJson = await response.json();
@@ -263,7 +263,7 @@ const api = (() => {
         headers: {
           'Content-Type': 'application/json',
         },
-      }
+      },
     );
 
     const responseJson = await response.json();

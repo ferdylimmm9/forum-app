@@ -18,7 +18,7 @@ function AddThreadPage() {
       dispatch(asyncAddThread({ body: content, title, category }));
       navigate(-1);
     },
-    [category, content, dispatch, navigate, title]
+    [category, content, dispatch, navigate, title],
   );
 
   return (
