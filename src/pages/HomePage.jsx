@@ -23,19 +23,19 @@ function HomePage() {
         (thread) =>
           (!!thread.title.toLowerCase().includes(query.toLowerCase()) &&
             category === '') ||
-          category === thread.category
+          category === thread.category,
       ),
-    [category, query, threads]
+    [category, query, threads],
   );
 
   const categoryList = React.useMemo(
     () => threads.map((thread) => thread.category).filter((value) => !!value),
-    [threads]
+    [threads],
   );
 
   const onClickCategory = React.useCallback(
     (item) => () => setCategory((prev) => (prev === item ? '' : item)),
-    []
+    [],
   );
 
   React.useEffect(() => {

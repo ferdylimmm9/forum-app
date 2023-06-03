@@ -29,34 +29,34 @@ function DetailPage() {
       dispatch(asyncAddCommentThreadDetail({ content, threadId: id }));
       setContent('');
     },
-    [content, dispatch, id]
+    [content, dispatch, id],
   );
 
   const date = React.useMemo(
     () => moment(new Date(threadDetail?.createdAt || new Date())).fromNow(),
-    [threadDetail?.createdAt]
+    [threadDetail?.createdAt],
   );
 
   const totalLikes = React.useMemo(
     () => (threadDetail?.upVotesBy || []).length,
-    [threadDetail?.upVotesBy]
+    [threadDetail?.upVotesBy],
   );
   const totalUnlikes = React.useMemo(
     () => (threadDetail?.downVotesBy || []).length,
-    [threadDetail?.downVotesBy]
+    [threadDetail?.downVotesBy],
   );
   const isUserLikes = React.useMemo(
     () => (threadDetail?.upVotesBy || []).includes(authUser?.id),
-    [authUser?.id, threadDetail?.upVotesBy]
+    [authUser?.id, threadDetail?.upVotesBy],
   );
   const isUserUnlikes = React.useMemo(
     () => (threadDetail?.downVotesBy || []).includes(authUser?.id),
-    [authUser?.id, threadDetail?.downVotesBy]
+    [authUser?.id, threadDetail?.downVotesBy],
   );
 
   const iconState = React.useCallback(
     (isFill) => (isFill ? 'fill' : 'regular'),
-    []
+    [],
   );
 
   const onClickLike = React.useCallback(() => {
@@ -65,7 +65,7 @@ function DetailPage() {
         asyncVoteThread({
           threadId: id,
           voteType: isUserLikes ? VoteType.NeutralVote : VoteType.UpVote,
-        })
+        }),
       );
     } else {
       alert('Must Login for this action');
@@ -78,7 +78,7 @@ function DetailPage() {
         asyncVoteThread({
           threadId: id,
           voteType: isUserUnlikes ? VoteType.NeutralVote : VoteType.DownVote,
-        })
+        }),
       );
     } else {
       alert('Must Login for this action');

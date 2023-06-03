@@ -36,7 +36,7 @@ function CommentCard({
         commentId: id,
         threadId,
         voteType: isUserLikes ? VoteType.NeutralVote : VoteType.UpVote,
-      })
+      }),
     );
   }, [authUser, dispatch, id, isUserLikes, threadId]);
 
@@ -50,7 +50,7 @@ function CommentCard({
         commentId: id,
         threadId,
         voteType: isUserUnlikes ? VoteType.NeutralVote : VoteType.DownVote,
-      })
+      }),
     );
   }, [authUser, dispatch, id, isUserUnlikes, threadId]);
 

@@ -13,7 +13,7 @@ function LoginForm({ onLogin }) {
       e.preventDefault();
       onLogin({ email, password });
     },
-    [onLogin, email, password]
+    [onLogin, email, password],
   );
 
   return (

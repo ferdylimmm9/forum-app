@@ -37,7 +37,7 @@ function ThreadCard({
         asyncVoteThread({
           threadId: id,
           voteType: isUserLikes ? VoteType.NeutralVote : VoteType.UpVote,
-        })
+        }),
       );
     } else {
       alert('Must Login for this action');
@@ -50,7 +50,7 @@ function ThreadCard({
         asyncVoteThread({
           threadId: id,
           voteType: isUserUnlikes ? VoteType.NeutralVote : VoteType.DownVote,
-        })
+        }),
       );
     } else {
       alert('Must Login for this action');
