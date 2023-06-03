@@ -1,1 +1,3 @@
-forum-app-ferdy.vercel.app
+https://forum-app-ferdy.vercel.app/
+
+https://github.com/ferdylimmm9/forum-app
