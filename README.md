@@ -1,3 +1,7 @@
+# Open Vercel
+
+This project was deployed with [Vercel](https://forum-app-ferdy.vercel.app/).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -18,6 +22,10 @@ You may also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `yarn storybook`
+
+Launches the storybook.\
 
 ### `yarn build`
 
