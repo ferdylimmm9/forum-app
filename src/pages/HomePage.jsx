@@ -42,6 +42,8 @@ function HomePage() {
     dispatch(asyncPopulateLeaderboardsAndThreads());
   }, [dispatch]);
 
+  console.log(threads);
+
   return (
     <div style={homePageStyles.homeWrapper}>
       <h2 style={homePageStyles.textCenter}>Forum App</h2>
@@ -81,7 +83,12 @@ function HomePage() {
         </div>
 
         {data.map((thread) => (
-          <ThreadCard {...thread} users={users} userId={authUser?.id ?? ''} />
+          <ThreadCard
+            key={thread.id}
+            {...thread}
+            users={users}
+            userId={authUser?.id ?? ''}
+          />
         ))}
       </div>
     </div>

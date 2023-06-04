@@ -14,23 +14,15 @@ describe('threadsReducers function', () => {
   });
   it('should return the threadDetail when given by RECEIVE_THREAD_DETAIL action', () => {
     //arrange
-    const initialState = {
-      id: 'thread-1',
-      title: 'Thread Pertama',
-      body: 'Ini adalah thread pertama',
-      category: 'General',
-      createdAt: '2021-06-21T07:00:00.000Z',
-      owner: {
-        id: 'users-1',
-        name: 'John Doe',
-        avatar: 'https://generated-image-url.jpg',
-      },
-      upVotesBy: [],
-      downVotesBy: [],
-      comments: [
-        {
-          id: 'comment-1',
-          content: 'Ini adalah komentar pertama',
+    const initialState = null;
+    const action = {
+      type: 'RECEIVE_THREAD_DETAIL',
+      payload: {
+        threadDetail: {
+          id: 'thread-1',
+          title: 'Thread Pertama',
+          body: 'Ini adalah thread pertama',
+          category: 'General',
           createdAt: '2021-06-21T07:00:00.000Z',
           owner: {
             id: 'users-1',
@@ -39,18 +31,29 @@ describe('threadsReducers function', () => {
           },
           upVotesBy: [],
           downVotesBy: [],
+          comments: [
+            {
+              id: 'comment-1',
+              content: 'Ini adalah komentar pertama',
+              createdAt: '2021-06-21T07:00:00.000Z',
+              owner: {
+                id: 'users-1',
+                name: 'John Doe',
+                avatar: 'https://generated-image-url.jpg',
+              },
+              upVotesBy: [],
+              downVotesBy: [],
+            },
+          ],
         },
-      ],
-    };
-    const action = {
-      type: 'RECEIVE_THREAD_DETAIL',
+      },
     };
 
     //action
     const nextState = threadDetailReducer(initialState, action);
 
     //assert
-    expect(nextState).toEqual(initialState);
+    expect(nextState).toEqual(action.payload.threadDetail);
   });
   it('should return the null when given by CLEAR_THREAD_DETAIL action', () => {
     //arrange
