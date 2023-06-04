@@ -3,7 +3,7 @@ import { ActionType } from './action';
 export function threadDetailReducer(threadDetail = null, action = {}) {
   switch (action.type) {
     case ActionType.RECEIVE_THREAD_DETAIL:
-      return threadDetail;
+      return action.payload.threadDetail;
     case ActionType.CLEAR_THREAD_DETAIL:
       return null;
     case ActionType.ADD_COMMENT_THREAD_DETAIL:

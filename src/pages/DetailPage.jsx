@@ -19,10 +19,6 @@ function DetailPage() {
   const dispatch = useDispatch();
   const [content, setContent] = React.useState('');
 
-  React.useEffect(() => {
-    dispatch(asyncReceiveThreadDetail(id));
-  }, [id, dispatch]);
-
   const onAddComment = React.useCallback(
     (e) => {
       e.preventDefault();
@@ -88,6 +84,10 @@ function DetailPage() {
   const onBack = React.useCallback(() => {
     navigate(-1);
   }, [navigate]);
+
+  React.useEffect(() => {
+    dispatch(asyncReceiveThreadDetail(id));
+  }, [id, dispatch]);
 
   if (threadDetail === null) {
     return null;
@@ -162,7 +162,7 @@ function DetailPage() {
           </form>
         )}
         <h3 style={detailPageStyles.mt16}>
-          Komentar ({(threadDetail.comment || []).length})
+          Komentar ({(threadDetail.comments || []).length})
         </h3>
         {(threadDetail.comments || []).map((comment) => (
           <CommentCard key={comment.id} {...comment} threadId={id} />

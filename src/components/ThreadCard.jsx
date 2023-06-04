@@ -107,7 +107,14 @@ ThreadCard.propTypes = {
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   userId: PropTypes.string.isRequired,
-  users: PropTypes.arrayOf(PropTypes.string).isRequired,
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      avatar: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ThreadCard;
